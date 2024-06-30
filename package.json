@@ -1,0 +1,49 @@
+{
+  "name": "concurrent-transactions",
+  "version": "1.0.0",
+  "description": "A proof of concept of how to use deal with concurrent requests in a transactions finance system",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test npm run knex:migrate && npx jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
+    "build": "npx tsc -p tsconfig.build.json && tsc-alias",
+    "dev:server": "npx ts-node-dev -r tsconfig-paths/register --watch --respawn --transpile-only  --ignore-watch node_modules src/server/index.ts",
+    "knex": "npx knex --env development",
+    "knex:migrate": "npm run knex migrate:latest",
+    "knex:add-migration": "npm run knex migrate:make",
+    "check-outdated": "npx check-outdated --ignore-pre-releases --ignore-packages tsconfig-paths,eslint",
+    "husky:init": "npx husky",
+    "linter": "npx prettier --check . && npx eslint . --ext ts --max-warnings 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.2",
+    "fastify": "^4.19.2",
+    "joi": "^17.9.2",
+    "knex": "^3.0.1",
+    "pg": "^8.11.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.4.2",
+    "@types/uuid": "^10.0.0",
+    "ts-jest": "^29.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.1.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^9.0.10",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.0.1",
+    "prettier": "^3.0.0",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.7",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.2"
+  }
+}
